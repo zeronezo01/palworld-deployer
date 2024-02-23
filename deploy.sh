@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 
 VERSION=$(date +"%Y%m%d%H%M%S")
 
