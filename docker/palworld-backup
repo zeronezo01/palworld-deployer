@@ -1,0 +1,14 @@
+#!/bin/bash
+
+HOME=/home/steam
+
+YEAR=$(date +"%Y")
+MOUTH=$(date +"%m")
+DAY=$(date +"%d")
+HOUR=$(date +"%H")
+DATE=${YEAR}${MOUTH}${DAY}${HOUR}
+
+pushd ${HOME}
+mkdir -p /backup/${YEAR}/${MOUTH}/${DAY}
+tar zcvf /backup/${YEAR}/${MOUTH}/${DAY}/palworld-backup.${DATE}.tar.gz Steam/steamapps/common/PalServer/Pal/Saved/SaveGames Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+popd
