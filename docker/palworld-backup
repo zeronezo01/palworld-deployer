@@ -10,5 +10,11 @@ DATE=${YEAR}${MOUTH}${DAY}${HOUR}
 
 pushd ${HOME}
 mkdir -p /backup/${YEAR}/${MOUTH}/${DAY}
-tar zcvf /backup/${YEAR}/${MOUTH}/${DAY}/palworld-backup.${DATE}.tar.gz Steam/steamapps/common/PalServer/Pal/Saved/SaveGames Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+mkdir -p /backup/temp/save
+cp -rf Steam/steamapps/common/PalServer/Pal/Saved/SaveGames/*/*/* /backup/temp/save
+cp -rf Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini /backup/temp
+pushd /backup/temp
+tar cvf /backup/${YEAR}/${MOUTH}/${DAY}/palworld-backup.${DATE}.tar.gz *
+popd
+rm -rf /backup/temp
 popd
